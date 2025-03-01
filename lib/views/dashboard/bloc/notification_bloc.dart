@@ -15,7 +15,7 @@ class NotificationBloc extends Bloc<NotificationEvent, NotificationState> {
   Future<void> _onFetchNotification(FetchNotification event, Emitter<NotificationState> emit) async {
     emit(NotificationLoading());
 
-    await Future<void>.delayed(const Duration(seconds: 3));
+    await Future<void>.delayed(const Duration(seconds: 2));
 
     emit(NotificationLoaded(['Notification 1', 'Notification 2']));
   }

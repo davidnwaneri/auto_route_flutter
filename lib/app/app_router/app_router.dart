@@ -17,7 +17,7 @@ class AppRouter extends RootStackRouter {
         ),
         CustomRoute(
           path: '/dashboard',
-          page: DashboardRoute.page,
+          page: HomeRoute.page,
           customRouteBuilder: <T>(BuildContext context, Widget child, AutoRoutePage<T> page) {
             return PageRouteBuilder<T>(
               fullscreenDialog: page.fullscreenDialog,
@@ -32,19 +32,23 @@ class AppRouter extends RootStackRouter {
           },
           children: [
             AutoRoute(
-              path: 'home',
-              page: HomeDashboardRoute.page,
-            ),
-            AutoRoute(
-              path: 'posts',
-              page: PostDashboardRoute.page,
-            ),
-            AutoRoute(
-              path: 'profile',
-              page: ProfileDashboardRoute.page,
+              path: '',
+              page: DashboardRoute.page,
               children: [
-                ..._profileRouter.routes,
+                AutoRoute(path: 'home', page: HomeDashboardRoute.page),
+                AutoRoute(path: 'posts', page: PostDashboardRoute.page),
+                AutoRoute(
+                  path: 'profile',
+                  page: ProfileDashboardRoute.page,
+                  children: [
+                    ..._profileRouter.routes,
+                  ],
+                ),
               ],
+            ),
+            AutoRoute(
+              path: 'notification',
+              page: NotificationRoute.page,
             ),
           ],
         ),
@@ -70,4 +74,4 @@ class ProfileRouter extends RootStackRouter {
       ];
 }
 
-const booksTab = EmptyShellRoute('BooksTab');
+const HomeRoute = EmptyShellRoute('HomeRoute');

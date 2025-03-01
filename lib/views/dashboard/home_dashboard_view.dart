@@ -1,6 +1,7 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:routing/app/app_router/app_router.gr.dart';
 import 'package:routing/views/dashboard/base_dashboard_view.dart';
 import 'package:routing/views/dashboard/bloc/notification_bloc.dart';
 
@@ -37,7 +38,15 @@ class HomeDashboardView extends StatelessWidget {
                 return Text('Error');
               }
             },
-          )
+          ),
+          Center(
+            child: TextButton(
+              onPressed: () {
+                context.router.pushNamed('/dashboard/notification');
+              },
+              child: Text('Go to Notifications'),
+            ),
+          ),
         ],
       ),
     );
